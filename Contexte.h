@@ -10,6 +10,11 @@ class Contexte
     uint64 _N_taille[];   // tableau, nombre de mots d'une taille donnée
     int _nb_lettres;      // nombre de lettres possibles pour un caractère
     char _lettres[];      // tableau des lettres de taille _nb_lettres
+
+    public:
+        Contexte();
+        virtual ~Contexte();
+
     // fonction de hachage
     // In: Clair c ----> Out: Empreinte
     void h( String c, Condense & d );
