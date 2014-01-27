@@ -7,20 +7,13 @@ using namespace std;
 Contexte::Contexte()
 {
     //ctor
-    /*
-        uint64_t _N;            // nombre de mots
-    int _mot_taille_min;  // nombre de lettres min d'un mot
-    int _mot_taille_max;  // nombre de lettres max d'un mot
-    uint64_t _N_taille[];   // tableau, nombre de mots d'une taille donnée
-    int _nb_lettres;      // nombre de lettres possibles pour un caractère
-    char _lettres[];
-    */
 
     // notre alphabet
     string alphabet = "abcdefghijklmnopqrstuvwxyz";
 
     _mot_taille_min = 3;
     _mot_taille_max = 3;
+
 
     // taille de notre alphabet
     _nb_lettres = alphabet.size();
@@ -33,6 +26,28 @@ Contexte::Contexte()
     }
 
     cout << "N = " << _N << " et nb lettre " << _nb_lettres << endl;
+
+    // generer un nb aleatoire (seeder)
+
+    // Choisir un T
+    _T = _N/2;
+
+    // Initialiser le tableau de correspondance
+
+
+    // populer le tableau
+        // on part de notre indice seeder
+        // boucle pendant M
+            // re-seed un nombre indc
+            // stock indc
+            //boucle sur T
+                // c <- i2c(indc)
+                // h <- h(c)
+                // indc <- h2i(h)
+            // end loop
+            // stock indc finale
+        //end loop
+
 }
 
 Contexte::~Contexte()

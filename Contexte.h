@@ -7,6 +7,7 @@
 class Contexte
 {
     uint64_t _N;            // nombre de mots
+    uint64_t _T;            // Notre T
     int _mot_taille_min;  // nombre de lettres min d'un mot
     int _mot_taille_max;  // nombre de lettres max d'un mot
     uint64_t _N_taille[];   // tableau, nombre de mots d'une taille donnée
