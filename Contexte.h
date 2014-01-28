@@ -29,6 +29,7 @@ class Contexte
     uint64_t i2i( uint64_t idx );
     // Retourne un indice aléatoire valide.
     uint64_t randIndex();
+
 };
 
 #endif // CONTEXTE_H

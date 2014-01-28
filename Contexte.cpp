@@ -2,12 +2,19 @@
 #include <math.h>
 #include "Contexte.h"
 
+#include <stdlib.h>
+#include <time.h>
+
+#include <openssl/md5.h>
+#include <openssl/sha.h>
+
 using namespace std;
 
 Contexte::Contexte()
 {
     //ctor
-
+    //init randoms
+    srand (time(NULL));
     // notre alphabet
     string alphabet = "abcdefghijklmnopqrstuvwxyz";
 
@@ -55,3 +62,32 @@ Contexte::~Contexte()
     //dtor
 }
 
+uint64_t Contexte::h2i( uint64_t t, std::string &d )
+{
+    //TODO use t
+    uint64_t* ptr = (uint64_t*) d.c_str(); // le tableau de caractères est vu comme un tableau de grand nombre.
+    uint64_t i = *ptr; // par définition le nombre stocké dans t[0-7].
+    return i;
+}
+
+
+uint64_t Contexte::randIndex()
+{
+    unsigned long n1 = random();
+    unsigned long n2 = random();
+    uint64_t n = ( (uint64_t) n2 )+ ( ( (uint64_t) n1 ) << 32 );
+    return n;
+}
+
+
+
+/*
+void HashMD5(unsigned char* pPlain, int nPlainLen, unsigned char* pHash)
+{
+  MD5(pPlain, nPlainLen, pHash);
+}
+void HashSHA1(unsigned char* pPlain, int nPlainLen, unsigned char* pHash)
+{
+  SHA1(pPlain, nPlainLen, pHash);
+}
+*/
