@@ -16,21 +16,19 @@ Contexte::Contexte()
     //init randoms
     srand (time(NULL));
     // notre alphabet
-    string alphabet = "abcdefghijklmnopqrstuvwxyz";
+    _lettres = "abcdefghijklmnopqrstuvwxyz";
 
     _mot_taille_min = 3;
     _mot_taille_max = 3;
 
 
     // taille de notre alphabet
-    _nb_lettres = alphabet.size();
+    _nb_lettres = _lettres.size();
 
     //TODO : faire une boucle qui calcule quand min != de max. On additione pr chaque taille
     _N = pow(_nb_lettres, _mot_taille_max);
 
-    for (int i=0; i < _nb_lettres; i++){
-        _lettres[i] = alphabet[i];
-    }
+
 
     cout << "N = " << _N << " et nb lettre " << _nb_lettres << endl;
 
@@ -43,17 +41,17 @@ Contexte::Contexte()
 
 
     // populer le tableau
-        // on part de notre indice seeder
-        // boucle pendant M
-            // re-seed un nombre indc
-            // stock indc
-            //boucle sur T
-                // c <- i2c(indc)
-                // h <- h(c)
-                // indc <- h2i(h)
-            // end loop
-            // stock indc finale
-        //end loop
+    // on part de notre indice seeder
+    // boucle pendant M
+    // re-seed un nombre indc
+    // stock indc
+    //boucle sur T
+    // c <- i2c(indc)
+    // h <- h(c)
+    // indc <- h2i(h)
+    // end loop
+    // stock indc finale
+    //end loop
 
 }
 
@@ -62,12 +60,41 @@ Contexte::~Contexte()
     //dtor
 }
 
+void Contexte::i2c( uint64_t idx, string & c )
+{
+    string clair = baseconvert(idx, _nb_lettres);
+    c = clair;
+}
+
+
+string Contexte::baseconvert(uint64_t n , uint64_t base)
+{
+    //handle errors by returning an empty string
+    if ( n < 0 || base < 2 || base > _lettres.size() )
+    {
+        return "";
+    }
+
+    string s = "";
+
+    while(true)
+    {
+        uint64_t r = n % base;
+        s = _lettres[r] + s ;
+        n = n / base;
+        if ( n == 0)
+            break;
+    }
+    return s;
+}
+
+
+
 uint64_t Contexte::h2i( uint64_t t, std::string &d )
 {
-    //TODO use t
     uint64_t* ptr = (uint64_t*) d.c_str(); // le tableau de caractères est vu comme un tableau de grand nombre.
     uint64_t i = *ptr; // par définition le nombre stocké dans t[0-7].
-    return i;
+    return i + t * 100;
 }
 
 
@@ -79,7 +106,22 @@ uint64_t Contexte::randIndex()
     return n;
 }
 
+void Contexte::h( std::string c, std::string & d )
+{
+    d = c ;
+}
 
+uint64_t Contexte::i2i( uint64_t idx )
+{
+    string i2cRes;
+    string hRes;
+    string h2iRes;
+
+    i2c(idx,i2cRes);
+    h(i2cRes,hRes);
+    return  h2i(0,h2iRes);
+
+}
 
 /*
 void HashMD5(unsigned char* pPlain, int nPlainLen, unsigned char* pHash)

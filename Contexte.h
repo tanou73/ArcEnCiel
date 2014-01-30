@@ -12,7 +12,10 @@ class Contexte
     int _mot_taille_max;  // nombre de lettres max d'un mot
     uint64_t _N_taille[];   // tableau, nombre de mots d'une taille donnée
     int _nb_lettres;      // nombre de lettres possibles pour un caractère
-    char _lettres[];      // tableau des lettres de taille _nb_lettres
+    std::string _lettres;      // tableau des lettres de taille _nb_lettres
+
+    std::string baseconvert(uint64_t n , uint64_t base);
+
 
     public:
         Contexte();

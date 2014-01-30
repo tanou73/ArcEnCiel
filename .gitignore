@@ -1,8 +1,8 @@
 #codeblocks stuff
 bin/
 obj/
-*.layout
-*.depend
+*.layout*
+*.depend*
 
 #linux stuff
 *~
