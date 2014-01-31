@@ -1,3 +1,9 @@
+#codeblocks stuff
+bin/
+obj/
+*.layout*
+*.depend*
+
 #linux stuff
 *~
 
