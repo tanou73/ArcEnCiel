@@ -35,8 +35,21 @@ int main()
     /*****************
     /* Arc en ciel
     /*****************/
+    // on init notre AEC et on creer notre table
     ArcEnCiel aec(c, 10, 3);
+    // on trie notre table
+    cout << "\n" << "----- Trie!" << endl;
     aec.trier();
+
+
+    cout << "\n" << "----- Rech.Dicho!" << endl;
+    uint64_t toFind = aec.getX(3).idxT;
+    uint64_t idx1;
+    uint64_t idxT;
+    if (aec.recherche(toFind, idx1, idxT))
+        cout << idx1 << " - " << idxT << endl;
+    else
+        cout << "something went wrong" << endl;
 
     return 0;
 }

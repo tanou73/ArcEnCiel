@@ -37,6 +37,8 @@
 		<Unit filename="Contexte.cpp" />
 		<Unit filename="Contexte.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="sha1.cpp" />
+		<Unit filename="sha1.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
