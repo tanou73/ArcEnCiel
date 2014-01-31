@@ -23,7 +23,7 @@ class Contexte
 
     // fonction de hachage
     // In: Clair c ----> Out: Empreinte. String is the return of the md5 function
-    void h( std::string c, std::string & d );
+    void h( std::string c, std::string &d );
     // In: position t, empreinte d ---> Retourne index.  String is the return of the md5 function
     uint64_t h2i( uint64_t t, std::string & d );
     // In: index idx ----> Out: Clair c.

@@ -1,12 +1,14 @@
 #include <iostream>
 #include <math.h>
 #include "Contexte.h"
+#include "sha1.h"
 
 #include <stdlib.h>
 #include <time.h>
 
-#include <openssl/md5.h>
-#include <openssl/sha.h>
+#include <iomanip>
+#include <sstream>
+
 
 using namespace std;
 
@@ -28,8 +30,6 @@ Contexte::Contexte()
     //TODO : faire une boucle qui calcule quand min != de max. On additione pr chaque taille
     _N = pow(_nb_lettres, _mot_taille_max);
 
-
-
     cout << "N = " << _N << " et nb lettre " << _nb_lettres << endl;
 
     // generer un nb aleatoire (seeder)
@@ -37,14 +37,13 @@ Contexte::Contexte()
     // Choisir un T
     _T = _N/2;
 
-    // Initialiser le tableau de correspondance
-
-
     // populer le tableau
     // on part de notre indice seeder
+
     // boucle pendant M
-    // re-seed un nombre indc
-    // stock indc
+
+        // re-seed un nombre indc
+        // stock indc
     //boucle sur T
     // c <- i2c(indc)
     // h <- h(c)
@@ -106,21 +105,38 @@ uint64_t Contexte::randIndex()
     return n;
 }
 
-void Contexte::h( std::string c, std::string & d )
+void Contexte::h( std::string c, std::string &d )
 {
-    d = c ;
+    SHA1        sha;
+    unsigned msgDigest[5];
+
+    sha.Reset();
+    sha << c.c_str();
+
+    if (!sha.Result(msgDigest))
+    {
+        cerr << "ERROR-- could not compute message digest" << endl;
+    }
+    else
+    {
+        for(int i = 0; i < 5 ; i++)
+        {
+            stringstream buffer;
+            buffer << std::hex << msgDigest[i];
+            d = d + buffer.str();
+        }
+    }
 }
 
 uint64_t Contexte::i2i( uint64_t idx )
 {
-    string i2cRes;
+    string cRes;
     string hRes;
-    string h2iRes;
 
-    i2c(idx,i2cRes);
-    h(i2cRes,hRes);
-    return  h2i(0,h2iRes);
+    i2c(idx,cRes);
+    h(cRes,hRes);
 
+    return  h2i(2,hRes);
 }
 
 /*
