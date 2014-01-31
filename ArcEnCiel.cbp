@@ -32,6 +32,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="ArcEnCiel.cpp" />
+		<Unit filename="ArcEnCiel.h" />
+		<Unit filename="Contexte.cpp" />
+		<Unit filename="Contexte.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
