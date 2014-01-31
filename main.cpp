@@ -1,15 +1,18 @@
 #include <iostream>
 #include <stdlib.h>
 #include "Contexte.h"
+#include "ArcEnCiel.h"
 
 using namespace std;
 
 int main()
 {
-    // variables init
+    /*****************
+    /* Contexte
+    /*****************/
     Contexte c;
 
-    cout << "----- i2c!" << endl;
+    /*cout << "----- i2c!" << endl;
     string i2cRes;
     c.i2c(678, i2cRes);
     cout << i2cRes << endl;
@@ -27,7 +30,13 @@ int main()
     cout << "----- i2i!" << endl;
     uint64_t i2iRes;
     i2iRes = c.i2i(678);
-    cout << i2iRes << endl;
+    cout << i2iRes << endl;*/
+
+    /*****************
+    /* Arc en ciel
+    /*****************/
+    ArcEnCiel aec(c, 10, 3);
+    aec.trier();
 
     return 0;
 }

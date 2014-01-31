@@ -36,22 +36,6 @@ Contexte::Contexte()
 
     // Choisir un T
     _T = _N/2;
-
-    // populer le tableau
-    // on part de notre indice seeder
-
-    // boucle pendant M
-
-        // re-seed un nombre indc
-        // stock indc
-    //boucle sur T
-    // c <- i2c(indc)
-    // h <- h(c)
-    // indc <- h2i(h)
-    // end loop
-    // stock indc finale
-    //end loop
-
 }
 
 Contexte::~Contexte()

@@ -14,12 +14,13 @@ class ArcEnCiel {
   int _numero;   // numero de la table (ici 0, mais voir "Moult tables")
   int _M;        // nombre de chaines dans la table
   int _T;        // taille de chaque chaine
-  Chaine* _X;     // la table elle-meme
+  Chaine* _X;    // la table elle-meme
 
   public:
-
+  ArcEnCiel(Contexte c, int M, int T);
+  ~ArcEnCiel();
   // Creer les M chaînes de taille T, dans le contexte ctxt
-  void creer( Contexte ctxt, int num, int M, int T );
+  void creer(Contexte &c, int num);
   // Tri _X suivant idxT.
   void trier();
   // Sauvegarde la table sur disque.
