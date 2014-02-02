@@ -51,5 +51,9 @@ int main()
     else
         cout << "something went wrong" << endl;
 
+    aec.save("test");
+
+    ArcEnCiel aec2(c, "test");
+
     return 0;
 }

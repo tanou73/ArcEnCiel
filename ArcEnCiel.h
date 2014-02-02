@@ -18,6 +18,7 @@ class ArcEnCiel {
 
   public:
   ArcEnCiel(Contexte c, int M, int T);
+  ArcEnCiel(Contexte c, std::string name);
   ~ArcEnCiel();
   // Creer les M chaînes de taille T, dans le contexte ctxt
   void creer(Contexte &c, int num);

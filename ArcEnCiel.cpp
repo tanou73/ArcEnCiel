@@ -6,6 +6,8 @@
 
 using namespace std;
 
+const string separateur = "->";
+
 ArcEnCiel::ArcEnCiel(Contexte c, int M, int T)
 {
     _M = M;
@@ -13,6 +15,11 @@ ArcEnCiel::ArcEnCiel(Contexte c, int M, int T)
     _T = T;
 
     creer(c, 0);
+}
+
+ArcEnCiel::ArcEnCiel(Contexte c, std::string name)
+{
+    load(name);
 }
 
 ArcEnCiel::~ArcEnCiel()
@@ -94,17 +101,21 @@ Chaine ArcEnCiel::getX(uint64_t idx) const
 {
     return _X[idx];
 }
-/*
+
 void ArcEnCiel::save( std::string name )
 {
-    ofstream fichier(name+".koin", ios::out | ios::trunc);  // ouverture en écriture avec effacement du fichier ouvert
+    name += ".koin";
+    // Si ça ne compile pas la, c'eest qu'il faut rajouter -std=c++11 en option au compilateur
+    std::ofstream fichier(name.c_str(), ios::out | ios::trunc);  // ouverture en écriture avec effacement du fichier ouvert
 
     if(fichier)
     {
         fichier << _M << endl;
+        fichier << _T << endl;
+
         for (int i = 0; i < _M; ++i )
         {
-            fichier << _X[i].idx1 << "::" << _X[i].idxT << endl;
+            fichier << _X[i].idx1 << separateur << _X[i].idxT << endl;
         }
 
         fichier.close();
@@ -113,28 +124,48 @@ void ArcEnCiel::save( std::string name )
         cerr << "Impossible d'ouvrir le fichier !" << endl;
 }
 
-void ArcEnCiel::load( std::string name, int T )
+void ArcEnCiel::load( std::string name)
 {
-    ifstream fichier(name+".koin", ios::in);  // on ouvre en lecture
+    name += ".koin";
+    // Si ça ne compile pas la, c'eest qu'il faut rajouter -std=c++11 en option au compilateur
+    std::ifstream fichier(name.c_str(), ios::in);  // on ouvre en lecture
 
     if(fichier)  // si l'ouverture a fonctionné
     {
         string contenu;  // déclaration d'une chaîne qui contiendra la ligne lue
-        getline(fichier, contenu);  // on met dans "contenu" la ligne
+        // recupere M
+        getline(fichier, contenu);
         _M = std::stoi( contenu );
+        // recupere T
+        getline(fichier, contenu);
+        _T = std::stoi( contenu );
+        // init table des chaines
         _X = new Chaine[_M];
 
+        for (int i = 0; i < _M; ++i )
+        {
+            // on recup la ligne
+            getline(fichier, contenu);
+            // on cherche la "->" qui sépare les indexs
+            string::size_type loc = contenu.find( separateur, 0 );
 
-        cout << contenu;  // on affiche la ligne
+            if( loc != string::npos )
+            {
+                _X[i].idx1 = stoul(contenu.substr (0,loc));
+                _X[i].idxT = stoul(contenu.substr (loc+separateur.length()));
+
+                cout << "Insérer correctement : ligne " << i+2 << loc << endl;
+            }
+            else
+            {
+                cout << "Fichier mal formaté, erreur ligne " << i+2 << endl;
+            }
+        }
 
         fichier.close();
     }
     else
         cerr << "Impossible d'ouvrir le fichier !" << endl;
-
-    return 0;
 }
-
-*/
 
 
