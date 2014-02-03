@@ -105,7 +105,7 @@ Chaine ArcEnCiel::getX(uint64_t idx) const
 void ArcEnCiel::save( std::string name )
 {
     name += ".koin";
-    // Si ça ne compile pas la, c'eest qu'il faut rajouter -std=c++11 en option au compilateur
+    // Si ça ne compile pas la, c'est qu'il faut rajouter -std=c++11 en option au compilateur
     std::ofstream fichier(name.c_str(), ios::out | ios::trunc);  // ouverture en écriture avec effacement du fichier ouvert
 
     if(fichier)
