@@ -1,3 +1,6 @@
+#fichier koin
+*.koin
+
 #codeblocks stuff
 bin/
 obj/

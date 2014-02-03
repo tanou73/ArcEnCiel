@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <algorithm>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -126,6 +127,7 @@ void ArcEnCiel::save( std::string name )
 
 void ArcEnCiel::load( std::string name)
 {
+    stringstream stream1;
     name += ".koin";
     // Si ça ne compile pas la, c'eest qu'il faut rajouter -std=c++11 en option au compilateur
     std::ifstream fichier(name.c_str(), ios::in);  // on ouvre en lecture
@@ -135,10 +137,17 @@ void ArcEnCiel::load( std::string name)
         string contenu;  // déclaration d'une chaîne qui contiendra la ligne lue
         // recupere M
         getline(fichier, contenu);
-        _M = std::stoi( contenu );
+        stream1.clear();
+        stream1.str(contenu);
+
+        stream1 >> _M;
+
         // recupere T
         getline(fichier, contenu);
-        _T = std::stoi( contenu );
+        stream1.clear();
+        stream1.str(contenu);
+        stream1 >> _T;
+
         // init table des chaines
         _X = new Chaine[_M];
 
@@ -151,9 +160,13 @@ void ArcEnCiel::load( std::string name)
 
             if( loc != string::npos )
             {
-                _X[i].idx1 = stoul(contenu.substr (0,loc));
-                _X[i].idxT = stoul(contenu.substr (loc+separateur.length()));
+                stream1.clear();
+                stream1.str(contenu.substr(0,loc));
+                stream1 >>  _X[i].idx1;
 
+                stream1.clear();
+                stream1.str(contenu.substr(loc+separateur.length()));
+                stream1 >>  _X[i].idxT;
                 cout << "Insérer correctement : ligne " << i+2 << loc << endl;
             }
             else
