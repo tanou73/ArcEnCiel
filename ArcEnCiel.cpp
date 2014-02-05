@@ -103,6 +103,11 @@ Chaine ArcEnCiel::getX(uint64_t idx) const
     return _X[idx];
 }
 
+int ArcEnCiel::getT() const
+{
+    return _T;
+}
+
 void ArcEnCiel::save( std::string name )
 {
     name += ".koin";

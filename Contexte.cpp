@@ -30,12 +30,14 @@ Contexte::Contexte()
     //TODO : faire une boucle qui calcule quand min != de max. On additione pr chaque taille
     _N = pow(_nb_lettres, _mot_taille_max);
 
-    cout << "N = " << _N << " et nb lettre " << _nb_lettres << endl;
+        // Choisir un T
+    _T = _N/2;
+
+    cout << "N = " << _N << " nb lettres = " << _nb_lettres << "T = " << _T << endl;
 
     // generer un nb aleatoire (seeder)
 
-    // Choisir un T
-    _T = _N/2;
+
 }
 
 Contexte::~Contexte()
