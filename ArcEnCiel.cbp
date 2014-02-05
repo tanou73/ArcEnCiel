@@ -36,6 +36,8 @@
 		<Unit filename="ArcEnCiel.h" />
 		<Unit filename="Contexte.cpp" />
 		<Unit filename="Contexte.h" />
+		<Unit filename="Cracker.cpp" />
+		<Unit filename="Cracker.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="sha1.cpp" />
 		<Unit filename="sha1.h" />
