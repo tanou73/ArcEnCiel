@@ -43,7 +43,7 @@ void ArcEnCiel::creer(Contexte &c, int num)
         //boucle sur T
         for(int j = 0; j < _T; ++j)
         {
-            idx = c.i2i(idx);
+            idx = c.i2i(4, idx);
         }
 
         // stock indc finale

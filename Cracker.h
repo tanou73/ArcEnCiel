@@ -1,3 +1,6 @@
+#ifndef CRACKER_H
+#define CRACKER_H
+
 #include <iostream>
 #include <string>
 #include "ArcEnCiel.h"
