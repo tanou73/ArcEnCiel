@@ -112,7 +112,7 @@ void Contexte::h( std::string c, std::string &d )
     }
 }
 
-uint64_t Contexte::i2i( uint64_t idx )
+uint64_t Contexte::i2i( uint64_t t, uint64_t idx )
 {
     string cRes;
     string hRes;
@@ -120,7 +120,7 @@ uint64_t Contexte::i2i( uint64_t idx )
     i2c(idx,cRes);
     h(cRes,hRes);
 
-    return  h2i(2,hRes);
+    return  h2i(t,hRes);
 }
 
 /*

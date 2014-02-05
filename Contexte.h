@@ -29,7 +29,7 @@ class Contexte
     // In: index idx ----> Out: Clair c.
     void i2c( uint64_t idx, std::string & c );
     // In: index idx ----> retourne index (la composée des précédentes)
-    uint64_t i2i( uint64_t idx );
+    uint64_t i2i( uint64_t t, uint64_t idx );
     // Retourne un indice aléatoire valide.
     uint64_t randIndex();
 
