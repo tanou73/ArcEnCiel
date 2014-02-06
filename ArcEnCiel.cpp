@@ -43,13 +43,11 @@ void ArcEnCiel::creer(Contexte &c, int num)
         //boucle sur T
         for(int j = 0; j < _T; ++j)
         {
-            idx = c.i2i(4, idx);
+            idx = c.i2i(j, idx);
         }
 
         // stock indc finale
         _X[i].idxT = idx;
-
-        cout << "chaine" << i << " : " << _X[i].idx1 << "-" << _X[i].idxT << endl;
     }
 }
 
@@ -83,9 +81,9 @@ bool ArcEnCiel::recherche( uint64_t idx, uint64_t & p, uint64_t & q )
         trouve = ( _X[im].idxT == idx);  // on regarde si c'est la valeur
 
         if( _X[im].idxT > idx )
-            ifin = im;  // on recommence sur partie supérieur
+            ifin = im;  // on recommence sur partie inferieure
         else
-            id = im;  // pareil sur partie inférieur
+            id = im;  // pareil sur partie superieure
     }
 
     if( _X[id].idxT == idx )

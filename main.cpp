@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "Contexte.h"
 #include "ArcEnCiel.h"
+#include "Cracker.h"
 
 using namespace std;
 
@@ -36,12 +37,13 @@ int main()
     /* Arc en ciel
     /*****************/
     // on init notre AEC et on creer notre table
-    ArcEnCiel aec(c, 10, 3);
+    ArcEnCiel aec(c, 10000, 200);
+  //  ArcEnCiel aec(c, "test");
     // on trie notre table
-    cout << "\n" << "----- Trie!" << endl;
+  //  cout << "\n" << "----- Trie!" << endl;
     aec.trier();
 
-
+/*
     cout << "\n" << "----- Rech.Dicho!" << endl;
     uint64_t toFind = aec.getX(3).idxT;
     uint64_t idx1;
@@ -50,10 +52,15 @@ int main()
         cout << idx1 << " - " << idxT << endl;
     else
         cout << "something went wrong" << endl;
+*/
+    aec.save("test2");
 
-    aec.save("test");
+    getchar();
 
-    ArcEnCiel aec2(c, "test");
-
+    string lol;
+    string hash = "86c90ddff799889145f4ba0e9f1dc49bcc771508";
+    Cracker crack;
+    crack.cracker(hash, aec, c, lol);
+    cout << "YOLO LOL BOB OMGGGOOOOODDD    " << lol << endl;
     return 0;
 }

@@ -31,9 +31,9 @@ Contexte::Contexte()
     _N = pow(_nb_lettres, _mot_taille_max);
 
         // Choisir un T
-    _T = _N/2;
+   // _T = _N/2;
 
-    cout << "N = " << _N << " nb lettres = " << _nb_lettres << "T = " << _T << endl;
+    cout << "N = " << _N << " nb lettres = " << _nb_lettres << endl;
 
     // generer un nb aleatoire (seeder)
 
@@ -54,22 +54,31 @@ void Contexte::i2c( uint64_t idx, string & c )
 
 string Contexte::baseconvert(uint64_t n , uint64_t base)
 {
+
     //handle errors by returning an empty string
     if ( n < 0 || base < 2 || base > _lettres.size() )
     {
         return "";
     }
 
-    string s = "";
+    n = n % _N;
 
-    while(true)
+    string s = "";
+    int i = 0;
+    while(i<_mot_taille_min)
     {
         uint64_t r = n % base;
         s = _lettres[r] + s ;
         n = n / base;
         if ( n == 0)
             break;
+        i++;
     }
+
+    while ( s.size() < _mot_taille_min)
+    s =  _lettres[0] + s;
+
+
     return s;
 }
 
@@ -79,7 +88,7 @@ uint64_t Contexte::h2i( uint64_t t, std::string &d )
 {
     uint64_t* ptr = (uint64_t*) d.c_str(); // le tableau de caractères est vu comme un tableau de grand nombre.
     uint64_t i = *ptr; // par définition le nombre stocké dans t[0-7].
-    return i + t * 100;
+    return i + t * 1 % _N;
 }
 
 
