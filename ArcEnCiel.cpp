@@ -103,6 +103,11 @@ Chaine ArcEnCiel::getX(uint64_t idx) const
     return _X[idx];
 }
 
+Chaine* ArcEnCiel::getX() const
+{
+    return _X;
+}
+
 int ArcEnCiel::getT() const
 {
     return _T;

@@ -34,6 +34,8 @@ class ArcEnCiel {
   // getter for _X
   Chaine getX(uint64_t idx) const;
 
+  Chaine* getX() const;
+
   int getT() const;
 
 };
