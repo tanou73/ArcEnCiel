@@ -37,7 +37,7 @@ int main()
     /* Arc en ciel
     /*****************/
     // on init notre AEC et on creer notre table
-    ArcEnCiel aec(c, 10000, 200);
+    ArcEnCiel aec(c, 10000, 300);
   //  ArcEnCiel aec(c, "test");
     // on trie notre table
   //  cout << "\n" << "----- Trie!" << endl;
@@ -53,12 +53,12 @@ int main()
     else
         cout << "something went wrong" << endl;
 */
-    aec.save("test2");
+    aec.save("test3");
 
     getchar();
 
     string lol;
-    string hash = "86c90ddff799889145f4ba0e9f1dc49bcc771508";
+    string hash = "e78543ddc3a9383ccaf39bcf2de76abcec261e69";
     Cracker crack;
     crack.cracker(hash, aec, c, lol);
     cout << "YOLO LOL BOB OMGGGOOOOODDD    " << lol << endl;

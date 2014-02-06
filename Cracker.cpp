@@ -119,4 +119,5 @@ bool Cracker::cracker( std::string& y, ArcEnCiel& aec, Contexte& c, std::string&
             }
         }
     }
+    return false;
 }

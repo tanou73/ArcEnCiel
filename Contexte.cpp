@@ -18,17 +18,23 @@ Contexte::Contexte()
     //init randoms
     srand (time(NULL));
     // notre alphabet
-    _lettres = "abcdefghijklmnopqrstuvwxyz";
+    //_lettres = "abcdefghijklmnopqrstuvwxyz";
+    _lettres = "abcde";
 
     _mot_taille_min = 3;
-    _mot_taille_max = 3;
+    _mot_taille_max = 5;
 
 
     // taille de notre alphabet
     _nb_lettres = _lettres.size();
 
-    //TODO : faire une boucle qui calcule quand min != de max. On additione pr chaque taille
-    _N = pow(_nb_lettres, _mot_taille_max);
+    _N = 0;
+    for (int i = _mot_taille_min; i <= _mot_taille_max; ++i)
+    {
+        _N += pow(_nb_lettres, i);
+    }
+
+    //_N = pow(_nb_lettres, _mot_taille_max);
 
         // Choisir un T
    // _T = _N/2;
@@ -65,7 +71,7 @@ string Contexte::baseconvert(uint64_t n , uint64_t base)
 
     string s = "";
     int i = 0;
-    while(i<_mot_taille_min)
+    while(true)
     {
         uint64_t r = n % base;
         s = _lettres[r] + s ;
@@ -76,8 +82,7 @@ string Contexte::baseconvert(uint64_t n , uint64_t base)
     }
 
     while ( s.size() < _mot_taille_min)
-    s =  _lettres[0] + s;
-
+        s =  _lettres[0] + s;
 
     return s;
 }
