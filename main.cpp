@@ -37,30 +37,74 @@ int main()
     /* Arc en ciel
     /*****************/
     // on init notre AEC et on creer notre table
-    ArcEnCiel aec(c, 10000, 300);
-  //  ArcEnCiel aec(c, "test");
-    // on trie notre table
-  //  cout << "\n" << "----- Trie!" << endl;
-    aec.trier();
 
-/*
-    cout << "\n" << "----- Rech.Dicho!" << endl;
-    uint64_t toFind = aec.getX(3).idxT;
-    uint64_t idx1;
-    uint64_t idxT;
-    if (aec.recherche(toFind, idx1, idxT))
-        cout << idx1 << " - " << idxT << endl;
+    int m = 100000;
+    int t = 1000;
+    string file = "dict";
+
+    int choice = 0;
+
+    cout << "Que voulez-vous faire ? "<< endl;
+    cout << "1. Générer la table avec M = " << m << " et T = " << t << " dans le fichier " << file << ".koin" <<  endl;
+    cout << "2. Charger le fichier " << file << ".koin" << endl;
+
+
+    cin >> choice;
+    cout << "Veuillez patienter..." << endl;
+    ArcEnCiel aec;
+    switch (choice)
+    {
+        case 1 :
+            aec.creer(c, m, t);
+            aec.trier();
+            aec.save(file);
+        break;
+        case 2:
+             aec.load(file);
+        break;
+        default:
+            cout << "Mauvaise entrée saisie" << endl;
+            exit(0);
+        break;
+    }
+
+    cout << "choix : " << choice << endl;
+
+    cout << "Veuillez entrer le texte crypté en SHA1 à déchiffer  : " << endl;
+
+    string sha1;
+    string uncrypted = "--non trouvé--";
+
+    cin >> sha1;
+    cout << "Veuillez patienter..." << endl;
+
+    Cracker crack;
+    if ( crack.cracker(sha1, aec, c, uncrypted))
+    {
+        cout << "Mot de passe trouvé: " << uncrypted << endl;
+    }
     else
-        cout << "something went wrong" << endl;
-*/
+    {
+     cout << "Le mot de passe ne se trouve pas dans la table :( " << endl;
+    }
+    cout << "Entrez 0 pour quitter le programme" << endl;
+    cin >> choice;
+/*
+
+    ArcEnCiel aec(c, m, t);
+    aec.trier();
     aec.save("test3");
 
-    getchar();
+    //load
+    //ArcEnCiel aec(c, "test");
 
     string lol;
     string hash = "e78543ddc3a9383ccaf39bcf2de76abcec261e69";
     Cracker crack;
     crack.cracker(hash, aec, c, lol);
     cout << "YOLO LOL BOB OMGGGOOOOODDD    " << lol << endl;
+
+
+    */
     return 0;
 }

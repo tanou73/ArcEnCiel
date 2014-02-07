@@ -9,18 +9,9 @@ using namespace std;
 
 const string separateur = "->";
 
-ArcEnCiel::ArcEnCiel(Contexte c, int M, int T)
+ArcEnCiel::ArcEnCiel()
 {
-    _M = M;
-    _X = new Chaine[_M];
-    _T = T;
 
-    creer(c, 0);
-}
-
-ArcEnCiel::ArcEnCiel(Contexte c, std::string name)
-{
-    load(name);
 }
 
 ArcEnCiel::~ArcEnCiel()
@@ -28,9 +19,13 @@ ArcEnCiel::~ArcEnCiel()
     delete []_X;
 }
 
+
 // Creer les M chaînes de taille T, dans le contexte ctxt
-void ArcEnCiel::creer(Contexte &c, int num)
+void ArcEnCiel::creer(Contexte &c, int M, int T)
 {
+    _M = M;
+    _X = new Chaine[_M];
+    _T = T;
     // populer le tableau
     // boucle pendant M
     for (int i = 0; i < _M; ++i)
@@ -61,8 +56,8 @@ void ArcEnCiel::trier()
 {
     int n;
     std::sort(_X, _X + _M, compare);
-    for (n=0; n<_M; n++)
-        cout << _X[n].idx1 << "-" << _X[n].idxT << endl;
+   // for (n=0; n<_M; n++)
+  //      cout << _X[n].idx1 << "-" << _X[n].idxT << endl;
 }
 
 bool ArcEnCiel::recherche( uint64_t idx, uint64_t & p, uint64_t & q )
@@ -156,6 +151,7 @@ void ArcEnCiel::load( std::string name)
         stream1.str(contenu);
         stream1 >> _T;
 
+
         // init table des chaines
         _X = new Chaine[_M];
 
@@ -175,7 +171,7 @@ void ArcEnCiel::load( std::string name)
                 stream1.clear();
                 stream1.str(contenu.substr(loc+separateur.length()));
                 stream1 >>  _X[i].idxT;
-                cout << "Insérer correctement : ligne " << i+2 << loc << endl;
+                //cout << "Insérer correctement : ligne " << i+2 << loc << endl;
             }
             else
             {

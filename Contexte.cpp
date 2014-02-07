@@ -19,7 +19,7 @@ Contexte::Contexte()
     srand (time(NULL));
     // notre alphabet
     //_lettres = "abcdefghijklmnopqrstuvwxyz";
-    _lettres = "abcde";
+    _lettres = "abcdefghijklmnopqrstuvwxyz";
 
     _mot_taille_min = 3;
     _mot_taille_max = 5;
@@ -39,7 +39,10 @@ Contexte::Contexte()
         // Choisir un T
    // _T = _N/2;
 
-    cout << "N = " << _N << " nb lettres = " << _nb_lettres << endl;
+    cout << "alphabet : " << _lettres << endl;
+    cout << "Mots de  " <<_mot_taille_min << " à " << _mot_taille_max << " lettres" << endl;
+    cout << "Nombre de mots possibles = " << _N << " avec " << _nb_lettres << " lettres" << endl;
+
 
     // generer un nb aleatoire (seeder)
 
@@ -138,14 +141,3 @@ uint64_t Contexte::i2i( uint64_t t, uint64_t idx )
 
     return  h2i(t,hRes);
 }
-
-/*
-void HashMD5(unsigned char* pPlain, int nPlainLen, unsigned char* pHash)
-{
-  MD5(pPlain, nPlainLen, pHash);
-}
-void HashSHA1(unsigned char* pPlain, int nPlainLen, unsigned char* pHash)
-{
-  SHA1(pPlain, nPlainLen, pHash);
-}
-*/

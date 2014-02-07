@@ -17,11 +17,10 @@ class ArcEnCiel {
   Chaine* _X;    // la table elle-meme
 
   public:
-  ArcEnCiel(Contexte c, int M, int T);
-  ArcEnCiel(Contexte c, std::string name);
+  ArcEnCiel();
   ~ArcEnCiel();
   // Creer les M chaînes de taille T, dans le contexte ctxt
-  void creer(Contexte &c, int num);
+  void creer(Contexte &c, int M, int T);
   // Tri _X suivant idxT.
   void trier();
   // Sauvegarde la table sur disque.
