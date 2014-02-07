@@ -40,21 +40,29 @@ int main()
 
     int m = 100000;
     int t = 1000;
-    string file = "dict";
+    string file = "big-dic";
+
+    cout << "Entrez un nom de fichier [tapez " << file << " si vous voulez prendre celui par défaut] : ";
+    cin >> file;
 
     int choice = 0;
-
     cout << "Que voulez-vous faire ? "<< endl;
-    cout << "1. Générer la table avec M = " << m << " et T = " << t << " dans le fichier " << file << ".koin" <<  endl;
+    cout << "1. Générer la table dans le fichier " << file << ".koin" <<  endl;
     cout << "2. Charger le fichier " << file << ".koin" << endl;
 
 
     cin >> choice;
-    cout << "Veuillez patienter..." << endl;
     ArcEnCiel aec;
     switch (choice)
     {
         case 1 :
+            cout << endl << endl << "Choisissez une taille de table M : ";
+            cin >> m;
+            cout << endl << endl << "Choisissez une largeur d'arc T : ";
+            cin >> t;
+
+            cout << endl << endl << "Veuillez patienter... (sortez vous acheter des pop-corns et regardez la dernière saison de californication..)" << endl;
+
             aec.creer(c, m, t);
             aec.trier();
             aec.save(file);
@@ -70,13 +78,13 @@ int main()
 
     cout << "choix : " << choice << endl;
 
-    cout << "Veuillez entrer le texte crypté en SHA1 à déchiffer  : " << endl;
+    cout << endl << endl << "Veuillez entrer le texte crypté en SHA1 à déchiffer  : " << endl;
 
     string sha1;
     string uncrypted = "--non trouvé--";
 
     cin >> sha1;
-    cout << "Veuillez patienter..." << endl;
+    cout << "Veuillez patienter... (cette fois c'est rapide... normalement... parfois... ça dépend..)" << endl;
 
     Cracker crack;
     if ( crack.cracker(sha1, aec, c, uncrypted))
@@ -85,26 +93,10 @@ int main()
     }
     else
     {
-     cout << "Le mot de passe ne se trouve pas dans la table :( " << endl;
+     cout << endl << endl << "Le mot de passe ne se trouve pas dans la table :( C'est pas la taille qui compte mais quand même plus c'est gros mieux c'est... " << endl;
     }
-    cout << "Entrez 0 pour quitter le programme" << endl;
+    cout << endl << "Entrez n'importe quoi pour quitter le programme" << endl;
     cin >> choice;
-/*
 
-    ArcEnCiel aec(c, m, t);
-    aec.trier();
-    aec.save("test3");
-
-    //load
-    //ArcEnCiel aec(c, "test");
-
-    string lol;
-    string hash = "e78543ddc3a9383ccaf39bcf2de76abcec261e69";
-    Cracker crack;
-    crack.cracker(hash, aec, c, lol);
-    cout << "YOLO LOL BOB OMGGGOOOOODDD    " << lol << endl;
-
-
-    */
     return 0;
 }
