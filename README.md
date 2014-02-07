@@ -2,13 +2,13 @@ ALGORITHME ARC EN CIEL
 ======================
 > Par Hugo Chiavenuto et Maxime Layat
 
-I/ INSTALLATION
+I/ Installation
 ---------------
 Pour compiler le programme il suffit d'executer un make sur ce repertoire. 
 Le programme généré se nomme "crack".
 
 
-II/ UTILISATION
+II/ Utilisation
 ---------------
 
 ###Lancement du programme###
@@ -21,7 +21,7 @@ Un menu vous demandera de saisir le nom d'un dictionnaire, des dictionnaires son
 - big-dic --> 100 000 * 1000
 - small-dic --> 50 000 * 500
 
-_Les dictionnaires ont pour extension ".koin" mais il n'est pas nécessaire de les saisir dans le programme._
+_Les dictionnaires ont pour extension ".koin" mais il n'est pas nécessaire de les saisir dans le programme._  
 _Vous pouvez en créer un en saisissant ce que vous voulez._
 
 Vous pouvez ensuite choisir de charger le dictionnaire précédement choisi ou de sauvegarder une nouvelle table dans ce fichier
@@ -29,7 +29,7 @@ Vous pouvez ensuite choisir de charger le dictionnaire précédement choisi ou d
 1. Générer la table:
 	- Le programme vous demandera de choisir un M (Hauteur) et un T (largeur)
 2. Charger le fichier:
-	-Le dictionnaire est chargé en mémoire.
+	- Le dictionnaire est chargé en mémoire.
 
 ###Cassage de la clé###
 
