@@ -125,7 +125,10 @@ void ArcEnCiel::save( std::string name )
         fichier.close();
     }
     else
+    {
         cerr << "Impossible d'ouvrir le fichier !" << endl;
+        exit(1);
+    }
 }
 
 void ArcEnCiel::load( std::string name)
@@ -182,7 +185,10 @@ void ArcEnCiel::load( std::string name)
         fichier.close();
     }
     else
+    {
         cerr << "Impossible d'ouvrir le fichier !" << endl;
+        exit(1);
+    }
 }
 
 

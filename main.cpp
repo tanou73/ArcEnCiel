@@ -45,10 +45,12 @@ int main()
     cout << "Entrez un nom de fichier [tapez " << file << " si vous voulez prendre celui par défaut] : ";
     cin >> file;
 
-    int choice = 0;
+
+    int choice;
     cout << "Que voulez-vous faire ? "<< endl;
     cout << "1. Générer la table dans le fichier " << file << ".koin" <<  endl;
     cout << "2. Charger le fichier " << file << ".koin" << endl;
+    cout << "3. Quitter" << endl;
 
 
     cin >> choice;
@@ -70,33 +72,44 @@ int main()
         case 2:
              aec.load(file);
         break;
+        case 3:
+            exit(0);
+        break;
         default:
             cout << "Mauvaise entrée saisie" << endl;
-            exit(0);
         break;
     }
 
-    cout << "choix : " << choice << endl;
-
-    cout << endl << endl << "Veuillez entrer le texte crypté en SHA1 à déchiffer  : " << endl;
-
-    string sha1;
-    string uncrypted = "--non trouvé--";
-
-    cin >> sha1;
-    cout << "Veuillez patienter... (cette fois c'est rapide... normalement... parfois... ça dépend..)" << endl;
-
-    Cracker crack;
-    if ( crack.cracker(sha1, aec, c, uncrypted))
+    do
     {
-        cout << "Mot de passe trouvé: " << uncrypted << endl;
-    }
-    else
-    {
-     cout << endl << endl << "Le mot de passe ne se trouve pas dans la table :( C'est pas la taille qui compte mais quand même plus c'est gros mieux c'est... " << endl;
-    }
-    cout << endl << "Entrez n'importe quoi pour quitter le programme" << endl;
-    cin >> choice;
+        cout << "Que voulez-vous faire ? "<< endl;
+        cout << "1. Casser un mot de passe" <<  endl;
+        cout << "2. Quitter" << endl;
+        cin >> choice;
+
+        if (choice != 1)
+            exit(0);
+
+        cout << endl << endl << "Veuillez entrer le texte crypté en SHA1 à déchiffer  : " << endl;
+
+        string sha1;
+        string uncrypted = "--non trouvé--";
+
+        cin >> sha1;
+        cout << "Veuillez patienter... (cette fois c'est rapide... normalement... parfois... ça dépend..)" << endl;
+
+        Cracker crack;
+        if ( crack.cracker(sha1, aec, c, uncrypted))
+        {
+            cout << endl << "Mot de passe trouvé : " << uncrypted << endl << endl;
+        }
+        else
+        {
+         cout << endl << endl << "Le mot de passe ne se trouve pas dans la table :( " << endl << endl ;
+        }
+
+    } while ( choice != 0);
+
 
     return 0;
 }
